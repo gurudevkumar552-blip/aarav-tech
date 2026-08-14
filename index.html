@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Aarav Tech - AI tools and AI Voice Generator">
+  <title>Aarav Tech | AI Tools</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="header">
+    <a class="logo" href="#home">Aarav <span>Tech</span></a>
+    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+    <nav id="nav">
+      <a href="#home">Home</a>
+      <a href="#voice">AI Voice Generator</a>
+      <a href="#tools">AI Tools</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="home" class="hero">
+      <div>
+        <p class="badge">🚀 Welcome to Aarav Tech</p>
+        <h1>AI Tools, <span>Made Simple.</span></h1>
+        <p class="hero-text">एक ही जगह पर आसान और उपयोगी AI tools. आज से शुरुआत करें और आगे नए tools जोड़ते जाएँ।</p>
+        <div class="actions">
+          <a class="btn primary" href="#voice">🎙️ Voice Generator खोलें</a>
+          <a class="btn secondary" href="#tools">सभी Tools देखें</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="voice" class="section">
+      <div class="section-title">
+        <p class="badge">🎙️ AI TOOL</p>
+        <h2>AI Voice Generator</h2>
+        <p>अपना text लिखें, आवाज़ चुनें और preview करें।</p>
+      </div>
+
+      <div class="voice-card">
+        <label for="text">अपना Text लिखें</label>
+        <textarea id="text" placeholder="यहाँ अपना text लिखें... उदाहरण: नमस्ते! Aarav Tech में आपका स्वागत है।"></textarea>
+
+        <div class="controls">
+          <div>
+            <label for="voice">Voice</label>
+            <select id="voice"></select>
+          </div>
+          <div>
+            <label for="rate">Speed: <span id="rateValue">1.0</span></label>
+            <input id="rate" type="range" min="0.5" max="2" step="0.1" value="1">
+          </div>
+          <div>
+            <label for="pitch">Pitch: <span id="pitchValue">1.0</span></label>
+            <input id="pitch" type="range" min="0" max="2" step="0.1" value="1">
+          </div>
+        </div>
+
+        <div class="actions">
+          <button class="btn primary" onclick="speakText()">▶ Generate / Play</button>
+          <button class="btn secondary" onclick="stopVoice()">■ Stop</button>
+          <button class="btn secondary" onclick="downloadText()">⬇ Download Text</button>
+        </div>
+        <p id="status" class="status">Ready.</p>
+        <p class="note">नोट: यह starter version आपके browser के built-in Text-to-Speech engine का उपयोग करता है। असली AI/MP3 generation के लिए बाद में TTS API जोड़ी जा सकती है।</p>
+      </div>
+    </section>
+
+    <section id="tools" class="section alt">
+      <div class="section-title">
+        <p class="badge">🛠️ FUTURE READY</p>
+        <h2>AI Tools</h2>
+        <p>आगे यहाँ नए tools अलग-अलग pages के रूप में जोड़े जा सकते हैं।</p>
+      </div>
+      <div class="grid">
+        <article class="tool-card active"><div>🎙️</div><h3>AI Voice Generator</h3><p>Text को voice में बदलें।</p><a href="#voice">Open Tool →</a></article>
+        <article class="tool-card"><div>🖼️</div><h3>AI Image Generator</h3><p>जल्द उपलब्ध होगा।</p><span>Coming Soon</span></article>
+        <article class="tool-card"><div>🎬</div><h3>AI Video Tools</h3><p>AI video utilities के लिए जगह तैयार है।</p><span>Coming Soon</span></article>
+        <article class="tool-card"><div>✍️</div><h3>AI Writing Tools</h3><p>Scripts, captions और content tools।</p><span>Coming Soon</span></article>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <div class="simple-card">
+        <p class="badge">ℹ️ ABOUT</p>
+        <h2>Aarav Tech</h2>
+        <p>Aarav Tech एक expandable AI tools website है। इसका structure इस तरह बनाया गया है कि आगे Voice Generator के साथ कई अलग-अलग AI tools और pages जोड़े जा सकें।</p>
+      </div>
+    </section>
+
+    <section id="contact" class="section alt">
+      <div class="simple-card">
+        <p class="badge">📞 CONTACT</p>
+        <h2>Contact Aarav Tech</h2>
+        <p>यहाँ बाद में आपका email, WhatsApp, social links या contact form जोड़ा जा सकता है।</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="logo">Aarav <span>Tech</span></div>
+    <p>© 2026 Aarav Tech. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
