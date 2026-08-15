@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aarav Tech - AI Image Generator</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:Arial,sans-serif;
+  background:#07111f;
+  color:white;
+}
+
+header{
+  padding:18px 7%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-bottom:1px solid #263d55;
+}
+
+.logo{
+  font-size:26px;
+  font-weight:bold;
+  color:white;
+  text-decoration:none;
+}
+
+.logo span{
+  color:#55b8ff;
+}
+
+nav a{
+  color:#d5e3f0;
+  text-decoration:none;
+  margin-left:20px;
+}
+
+.hero{
+  text-align:center;
+  padding:70px 20px 35px;
+}
+
+.badge{
+  display:inline-block;
+  padding:8px 15px;
+  border-radius:30px;
+  background:#102b44;
+  color:#55b8ff;
+  border:1px solid #245478;
+  font-size:13px;
+  font-weight:bold;
+}
+
+h1{
+  font-size:clamp(40px,8vw,65px);
+  margin:20px 0 12px;
+}
+
+.hero p{
+  color:#aebfd1;
+  font-size:18px;
+}
+
+.container{
+  max-width:900px;
+  margin:20px auto 70px;
+  padding:30px;
+  background:#0d1d31;
+  border:1px solid #29415e;
+  border-radius:20px;
+}
+
+label{
+  display:block;
+  margin:15px 0 8px;
+  font-weight:bold;
+}
+
+textarea,
+select{
+  width:100%;
+  padding:14px;
+  border-radius:10px;
+  border:1px solid #29415e;
+  background:#07111f;
+  color:white;
+  font-size:16px;
+}
+
+textarea{
+  min-height:200px;
+  resize:vertical;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+}
+
+button{
+  margin-top:22px;
+  padding:14px 20px;
+  border:0;
+  border-radius:10px;
+  background:#55b8ff;
+  color:#03101b;
+  font-weight:bold;
+  font-size:16px;
+  cursor:pointer;
+}
+
+button:hover{
+  opacity:.9;
+}
+
+.result{
+  margin-top:30px;
+  padding:20px;
+  border-radius:15px;
+  background:#081728;
+  border:1px dashed #376180;
+  display:none;
+}
+
+.result h2{
+  margin-bottom:15px;
+}
+
+#generatedPrompt{
+  line-height:1.7;
+  color:#c8d8e8;
+}
+
+.copy{
+  background:#13263b;
+  color:white;
+  border:1px solid #31506d;
+}
+
+.note{
+  margin-top:20px;
+  color:#8298ad;
+  font-size:14px;
+  line-height:1.6;
+}
+
+footer{
+  text-align:center;
+  padding:30px;
+  border-top:1px solid #20324a;
+  color:#8298ad;
+}
+
+@media(max-width:650px){
+  nav a{
+    font-size:13px;
+    margin-left:8px;
+  }
+
+  .grid{
+    grid-template-columns:1fr;
+  }
+
+  .container{
+    margin:10px 4% 50px;
+    padding:20px;
+  }
+
+  button{
+    width:100%;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<a href="index.html" class="logo">
+Aarav <span>Tech</span>
+</a>
+
+<nav>
+<a href="index.html">Home</a>
+<a href="voice-generator.html">Voice</a>
+<a href="ai-image-generator.html">Image</a>
+</nav>
+
+</header>
+
+
+<section class="hero">
+
+<div class="badge">🖼️ AARAV TECH</div>
+
+<h1>AI Image Generator</h1>
+
+<p>
+अपना idea लिखें और professional AI image prompt तैयार करें।
+</p>
+
+</section>
+
+
+<div class="container">
+
+<label>आप क्या बनाना चाहते हैं?</label>
+
+<textarea
+id="prompt"
+placeholder="उदाहरण: एक भारतीय गाँव में सूर्यास्त का सुंदर दृश्य, cinematic lighting..."
+></textarea>
+
+
+<div class="grid">
+
+<div>
+
+<label>Image Style</label>
+
+<select id="style">
+
+<option>Realistic</option>
+<option>Cinematic</option>
+<option>3D</option>
+<option>Anime</option>
+<option>Digital Art</option>
+<option>Fantasy</option>
+<option>Portrait</option>
+
+</select>
+
+</div>
+
+
+<div>
+
+<label>Image Size</label>
+
+<select id="size">
+
+<option>1:1 Square</option>
+<option>16:9 Landscape</option>
+<option>9:16 Portrait</option>
+<option>4:5 Instagram</option>
+
+</select>
+
+</div>
+
+</div>
+
+
+<button onclick="generatePrompt()">
+✨ Generate Image Prompt
+</button>
+
+
+<div class="result" id="result">
+
+<h2>🎨 Your AI Prompt</h2>
+
+<p id="generatedPrompt"></p>
+
+<button class="copy" onclick="copyPrompt()">
+📋 Copy Prompt
+</button>
+
+<p class="note">
+अभी यह page professional AI prompt तैयार करता है।
+बाद में इसमें वास्तविक AI Image Generation API जोड़कर
+Generate → Preview → Download सुविधा भी जोड़ी जा सकती है।
+</p>
+
+</div>
+
+</div>
+
+
+<footer>
+© 2026 Aarav Tech • AI Tools & Technology
+</footer>
+
+
+<script>
+
+function generatePrompt(){
+
+const text=document.getElementById("prompt").value.trim();
+
+const style=document.getElementById("style").value;
+
+const size=document.getElementById("size").value;
+
+if(!text){
+
+alert("पहले अपना image idea लिखें।");
+
+return;
+
+}
+
+const finalPrompt =
+text +
+", " +
+style +
+" style, " +
+size +
+" composition, highly detailed, professional quality, sharp focus, beautiful lighting, realistic details, cinematic composition, high quality.";
+
+document.getElementById("generatedPrompt").innerText=finalPrompt;
+
+document.getElementById("result").style.display="block";
+
+}
+
+
+function copyPrompt(){
+
+const text=document.getElementById("generatedPrompt").innerText;
+
+navigator.clipboard.writeText(text);
+
+alert("Prompt Copy हो गया ✅");
+
+}
+
+</script>
+
+</body>
+</html>
